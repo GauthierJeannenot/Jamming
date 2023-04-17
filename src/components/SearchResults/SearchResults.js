@@ -1,8 +1,16 @@
 import React from "react";
-import { TrackList } from '../TrackList/TrackList'
+import { Track } from '../Track/Track'
 
-export function SearchResults() {
-    return(
-        <TrackList />
+export function SearchResults({searchResults, setPlayList}) {
+    return (
+        <div>
+            <h2>Results</h2>
+            <ul id="SearchResultsDiv">
+                {searchResults.map(track => <Track track={track}  setPlayList={setPlayList} />)}
+            </ul>
+
+        </div>
+
+
     )
 }
