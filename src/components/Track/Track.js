@@ -1,9 +1,12 @@
 import React from "react";
 import './Track.css'
 
-export function Track({track, setPlayList, isRemoval}) {
+export function Track({track, setPlayList, isRemoval, playList}) {
 
     const onAdd = () => {
+        if (playList.some((savedTrack) => savedTrack.id === track.id)){
+            return
+        }
         setPlayList((prevTracks)=> [...prevTracks, track])
     }
     const onRemove = () => {
@@ -20,7 +23,7 @@ export function Track({track, setPlayList, isRemoval}) {
         )
     }
     return(
-        <li id="trackId" key={track.id}>
+        <li id="trackId">
             <div>
                 <p>name: {track.name}</p>
                 <p>artist: {track.artist}</p>

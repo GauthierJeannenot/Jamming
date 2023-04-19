@@ -10,8 +10,9 @@ export function PlayList({playList, setPlayList, setPlayListName}) {
     return(
         <div>
             <input type='text' defaultValue='New PlayList' onChange={nameChange}></input>
+ 
+            {playList.map(track => <Track track={track} isRemoval={true} setPlayList={setPlayList} key={track.id}/>)}
             <SaveToSpotifyButton />
-            {playList.map(track => <Track track={track} isRemoval={true} setPlayList={setPlayList}/>)}
         </div>
         
 
