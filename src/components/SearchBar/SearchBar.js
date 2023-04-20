@@ -2,11 +2,15 @@ import React from 'react'
 import './SearchBar.css'
 import { Spotify } from '../util/Spotify'
 
-export function SearchBar({setSearchResults}) {
+export function SearchBar({setSearchResults, searchResults}) {
     const [term, setTerm] = React.useState("")
     const handleTermChange = (e) => {setTerm(e.target.value)}
-    const handleSearch = () => {
-        Spotify.search(term).then(setSearchResults)
+    const handleSearch = async() => {
+        const searchResult = await Spotify.search(term)
+        setSearchResults(searchResult)
+
+        console.log(searchResults)
+        
     }
 
 

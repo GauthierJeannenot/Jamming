@@ -23,6 +23,7 @@ export const Spotify = {
         }
     },
     async search(term) {
+        const accessToken = Spotify.getAccessToken()
         try {
             const searchResults = await fetch(
                 `https://api.spotify.com/v1/search?type=track&q=${term}`,
@@ -34,6 +35,9 @@ export const Spotify = {
             )
             if (searchResults.ok) {
                 const jsonSearchResults = await searchResults.json()
+                if (!jsonSearchResults.tracks) {
+                    return []
+                }
                 return jsonSearchResults.tracks.items.map(track => ({
                     id: track.id,
                     name: track.name,
@@ -41,10 +45,7 @@ export const Spotify = {
                     album: track.album.name,
                     uri: track.uri
                   }))
-
             }
-
-
         } catch (error) { console.log(error) }
     }
 }

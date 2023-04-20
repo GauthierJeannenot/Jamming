@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <Header />
-      <SearchBar setSearchResults={setSearchResults}/>
+      <SearchBar setSearchResults={setSearchResults} searchResults={searchResults}/>
       <div id='results'>
         <SearchResults searchResults={searchResults} setPlayList={setPlayList} playList={playList}/>
         <PlayList playList={playList} setPlayList={setPlayList} setPlayListName={setPlayListName}/>
