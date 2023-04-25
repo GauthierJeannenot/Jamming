@@ -44,8 +44,38 @@ export const Spotify = {
                     artist: track.artists[0].name,
                     album: track.album.name,
                     uri: track.uri
-                  }))
+                }))
             }
+        } catch (error) { console.log(error) }
+    },
+    async savePlayList(playListName, trackUris) {
+        accessToken = Spotify.getAccessToken()
+        try {
+            const user = await fetch('https://api.spotify.com/v1/me', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+            const jsonUser = await user.json()
+            const userId = jsonUser.id
+
+            const playList = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    method: `POST`,
+                    body: JSON.stringify({ name: playListName })
+                }
+            })
+            const jsonPlayList = await playList.json()
+            const playListId = jsonPlayList.id
+            const playListTracks = await fetch(`https://api.spotify.com/v1/playlists/${playListId}/tracks`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    methode: `POST`,
+                    body: JSON.stringify({ uri: trackUris })
+                }
+            })
+            return playListTracks
         } catch (error) { console.log(error) }
     }
 }

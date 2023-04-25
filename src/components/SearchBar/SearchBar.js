@@ -8,8 +8,6 @@ export function SearchBar({setSearchResults, searchResults}) {
     const handleSearch = async() => {
         const searchResult = await Spotify.search(term)
         setSearchResults(searchResult)
-
-        console.log(searchResults)
         
     }
 
