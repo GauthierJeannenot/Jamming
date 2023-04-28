@@ -8,7 +8,6 @@ export function Track({ track, setPlayList, isRemoval, playList }) {
             return
         }
         setPlayList((prevTracks) => [...prevTracks, track])
-        console.log(track)
     }
     const onRemove = () => {
         setPlayList((prevTrack) => prevTrack.filter(currentTrack => currentTrack.id !== track.id))

@@ -5,12 +5,14 @@ import { SearchBar } from '../SearchBar/SearchBar'
 import { SearchResults } from '../SearchResults/SearchResults'
 import { PlayList } from '../PlayList/PlayList'
 import { Spotify } from '../util/Spotify'
+import { PlayListList } from '../PlayListList/PlayListList'
 
 function App() {
 
   const [searchResults, setSearchResults] = React.useState([])
   const [playList, setPlayList] = React.useState([])
-  const [playListName, setPlayListName] = React.useState()
+  const [playListName, setPlayListName] = React.useState('New Playlist')
+  const [playListLists, setPlayListLists] = React.useState([])
 
   
   
@@ -24,7 +26,9 @@ function App() {
       <div id='results'>
         <SearchResults searchResults={searchResults} setPlayList={setPlayList} playList={playList}/>
         <PlayList playList={playList} setPlayList={setPlayList} setPlayListName={setPlayListName} playListName={playListName}/>
+        <PlayListList playListLists={playListLists} setPlayListLists={setPlayListLists} />
       </div>
+      
 
     </>
   );

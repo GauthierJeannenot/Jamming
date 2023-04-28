@@ -8,6 +8,7 @@ export function PlayList({playList, setPlayList, setPlayListName, playListName})
     }
     const handleClick = async() => {
         const trackUris = playList.map(track => track.uri)
+        console.log(trackUris)
         await Spotify.savePlayList(playListName, trackUris)
     }
 
