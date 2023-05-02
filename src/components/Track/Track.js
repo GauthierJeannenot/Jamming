@@ -15,12 +15,12 @@ export function Track({ track, setPlayList, isRemoval, playList }) {
     const renderAction = () => {
         if (isRemoval) {
             return (
-                <button onClick={onRemove}>-</button>
+                <button onClick={onRemove} id='Track-action'>-</button>
 
             )
         }
         return (
-            <button onClick={onAdd}>+</button>
+            <button onClick={onAdd} id='Track-action'>+</button>
         )
     }
     const renderPreview = () => {
@@ -34,15 +34,13 @@ export function Track({ track, setPlayList, isRemoval, playList }) {
 
     }
     return (
-        <li id="trackId">
-            <div>
-                <p>name: {track.name}</p>
-                <p>artist: {track.artist}</p>
-                <p>album: {track.album}</p>
+        <div id="Track">
+            <div id="Track-information">
+                <h3>{track.name}</h3>
+                <p>{track.artist} | {track.album}</p>
+                {renderPreview()}
             </div>
             {renderAction()}
-            {renderPreview()}
-
-        </li>
+        </div>
     )
 }

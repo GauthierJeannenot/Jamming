@@ -1,7 +1,36 @@
 #SearchBarDiv {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-input {
+#SearchBarDiv input {
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 280px;
     text-align: center;
+    padding: 0.88rem 0;
+    margin-bottom: 2.22rem;
+}
+#SearchBarDiv input:focus {
+    outline: none;
+}
+
+#SearchBarDiv button{
+    cursor: pointer;
+    width: 8.11rem;
+    padding: 0.77rem 0;
+    border-radius: 54px;
+    text-align: center;
+    border: 0px;
+    background-color: midnightblue;
+    color: aliceblue;
+    transition: background-color .25s;
+    font-size: .833rem;
+    font-weight: 500;
+    margin-bottom: 2.22rem;
+}
+#SearchBarDiv button:hover {
+    background-color: rgba(108, 65, 233, .7)
 }

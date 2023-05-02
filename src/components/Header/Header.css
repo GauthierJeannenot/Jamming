@@ -3,8 +3,9 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 2em;
 }
 
 nav > img {
-    width: 200px;
+    width: 100px;
 }

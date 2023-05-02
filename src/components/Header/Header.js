@@ -5,7 +5,7 @@ import './Header.css'
 export function Header() {
     return(
         <nav>
-            <p>Jamming</p>
+            <h1>Jamming</h1>
             <img src={logo}></img>
         </nav>
     )

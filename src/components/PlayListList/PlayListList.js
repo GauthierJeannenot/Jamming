@@ -1,8 +1,8 @@
 import React from "react";
 import { Spotify } from '../util/Spotify'
 import { PlayListItem } from "../PlayListItem/PlayListItem";
-
-export const PlayListList = ({playListLists, setPlayListLists}) => {
+import './PlayListList.css'
+export const PlayListList = ({playListLists, setPlayListLists, setPlayListName, setPlayList}) => {
     React.useEffect(() => {
         const getPlayListList = async() => {
             const playListList = await Spotify.getUserPlaylists()
@@ -13,11 +13,13 @@ export const PlayListList = ({playListLists, setPlayListLists}) => {
 
 
     return(
-        <div>
+        <div id="PlayListList">
             {playListLists.map(playList => <PlayListItem 
                 playListName={playList.playListName} 
                 playListId={playList.playListId} 
-                key={playList.playListId} />)}
+                key={playList.playListId}
+                setPlayListName={setPlayListName}
+                setPlayList={setPlayList} />)}
         </div>
     )
 }

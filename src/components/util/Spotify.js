@@ -80,7 +80,7 @@ export const Spotify = {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 },
-                body: JSON.stringify({ uri: trackUris })
+                body: JSON.stringify({ uris: trackUris })
             })
 
         } catch (error) { console.log(error) }
@@ -102,10 +102,22 @@ export const Spotify = {
         } catch (error) { console.log(error) }
 
     },
-    async getPlayListTracks() {
-        try{
-            
-        }catch(error) {console.log(error)}
+    async getPlayListTracks(id) {
+        try {
+            const playListTracks = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+            const jsonPlayListTracks = await playListTracks.json()
+            return jsonPlayListTracks.items.map(trackItem => ({
+                id: trackItem.track.id,
+                name: trackItem.track.name,
+                artist: trackItem.track.artists[0].name,
+                album: trackItem.track.album.name,
+                uri: trackItem.track.uri,
+            }))
+        } catch (error) { console.log(error) }
 
     }
 }
